@@ -1,1 +1,124 @@
+body, html {
+    height: 100%;
+    background-color: #313131;
+    
+}
+input[type=text] {
+    width: 90%;
+    display: flex;
+    margin: 5px auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 2rem;
+    text-align: right;
+    color: transparent;
+    text-shadow: 0 0 0 white;
+ 
+}
+input:hover {
+    cursor: default;
+}
+.calculator {
+    width: 300px;
+    height: 400px;
+    margin: 20vh auto;
+    border: 2px solid black;
+    border-radius: 13px;
+    background-color: grey;
+}
 
+.btn {
+    margin: 5px 0 0 12px;
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    border: 0;
+    font-size: 2rem;
+}
+.op {
+    background-color: blue;
+}
+#zero {
+    width: 132px;
+}
+#allClear {
+    width: 132px;
+}
+.noselect {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -ms-user-select: none;
+}
+.grid-container{
+    height: 79%;
+    width: 100%;
+    margin: auto;
+    border: 2px solid black;
+    display: grid;
+    grid-template-areas: 
+    'ac ac back div'
+    'seven eight nine mult'
+    'four five six minus'
+    'one two three plus'
+    'zero zero dot equals';
+}
+#ac {
+    grid-area: ac;
+}
+#c {
+    grid-area: c;
+}
+#back {
+    grid-area: back;
+}
+#dot {
+    grid-area: dot;
+}
+/*operators*/
+#div {
+    grid-area: div;
+}
+#mult {
+    grid-area: mult;
+}
+#minus {
+    grid-area: minus;
+}
+#plus {
+    grid-area: plus;
+}
+#equals {
+    grid-area: equals;
+}
+/*numbers*/
+#zero {
+    grid-area: zero;
+}
+#one {
+    grid-area: one;
+}
+#two {
+    grid-area: two;
+}
+#three {
+    grid-area: three;
+}
+#four {
+    grid-area: four;
+}
+#five {
+    grid-area: five;
+}
+#six {
+    grid-area: six;
+}
+#seven {
+    grid-area: seven;
+}
+#eight {
+    grid-area: eight;
+}
+#nine {
+    grid-area: nine;
+}
