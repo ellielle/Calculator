@@ -35,14 +35,15 @@ input:hover {
     border: 0;
     font-size: 2rem;
 }
-.op {
-    background-color: blue;
+.operator, .equals {
+    background-color: darkcyan;
 }
 #zero {
     width: 132px;
 }
 #allClear {
     width: 132px;
+    background-color: maroon;
 }
 .noselect {
     -moz-user-select: none;

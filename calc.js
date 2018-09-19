@@ -13,7 +13,7 @@ window.onload = () => {
 };
 addButtons = () => {
     btn("btn", "AC");
-    btn("btn", "<-");
+    btn("btn", "⌫");
     btn("btn", "÷");
     btn("btn", "7");
     btn("btn", "8");
@@ -37,6 +37,9 @@ btn = (clName, attributeData) => {
     buttons.setAttribute("data", attributeData);
     if (attributeData == "AC") buttons.setAttribute("id", "allClear");
     if (attributeData == "0") buttons.setAttribute("id", "zero");
+    if (attributeData == "÷" || attributeData == "x" || attributeData == "-" || attributeData == "+") buttons.setAttribute("class", "operator");
+    if (attributeData == "=") buttons.setAttribute("class", "equals");
+    if (attributeData == "⌫") buttons.setAttribute("class", "back");
 
     container.appendChild(buttons).classList.add(`${clName}`);
 
@@ -52,7 +55,7 @@ btn = (clName, attributeData) => {
             display.value = '';       
             returnAnswer = 0;     
         }
-        else if (data == "<-") {
+        else if (data == "⌫") {
             display.value = display.value.slice(0, -1);
         }
         else if (data == "+" || data == "-" || data == "x" || data == "÷") {
