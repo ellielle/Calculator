@@ -1,11 +1,15 @@
 const display = document.querySelector("#display");
 const container = document.querySelector(".calc-container");
-let calculate = [33, 33, 33];
+let calculate = [];
+let ops = [];
+let returnAnswer = 0;
 
 
 window.onload = () => {
     display.value = '';
     addButtons();
+    ops.length = 0;
+    calculate.length = 0;
 };
 addButtons = () => {
     btn("btn", "AC");
@@ -43,35 +47,53 @@ btn = (clName, attributeData) => {
         }
         else if (data == ".") display.value += data;
         else if (data == "AC") {
-            console.log(display.value);
-            
             calculate.length = 0; 
-            display.value = '';            
+            ops.length = 0;
+            display.value = '';       
+            returnAnswer = 0;     
         }
         else if (data == "<-") {
             display.value = display.value.slice(0, -1);
         }
+        else if (data == "+" || data == "-" || data == "x" || data == "÷") {
+            display.value += data;
+            ops.push(data);
+        }
+        else {
+            operate();
+            calculate.length = 0;
+            ops.length = 0;
+        }
 
     });
 };
-
-addition = () => {
-    
-    
-};
-
-subtraction = () => {
-    
-};
-
-multiplication = () => {
-    
-};
-
-division = () => {
-
-};
-
 operate = () => {
+    let temp = display.value.split(/[x÷+-]/g);
+    temp.forEach(num => {
+        calculate.push(parseFloat(num));
+    });
+    ops.push(''); //temporary measure to bring both arrays to the same length
+    returnAnswer = calculate[0];
+    for (let i = 0; i < calculate.length; i++) {
+        if (ops[i] == "+") {
+            returnAnswer += calculate[i+1];
+        }
+        else if (ops[i] == "-") {
+            returnAnswer -= calculate[i+1];
+        }
+        else if (ops[i] == "x") {
+            returnAnswer *= calculate[i+1];
+        }
+        else if (ops[i] == "÷") {
+            Math.floor(returnAnswer /= calculate[i+1]);            
+        }                
+    }
+    if (returnAnswer % 1 === 0) {
+        display.value = returnAnswer;
+    }
+    else if (isNaN(returnAnswer)) {
+        display.value = "ERROR";
+    }
+    else display.value = returnAnswer.toFixed(2);
     
 };
